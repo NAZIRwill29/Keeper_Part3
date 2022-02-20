@@ -18,21 +18,22 @@ function CreateArea(props) {
     });
   }
 
+  //when btn clicked
+  function submit(event) {
+    //call func add
+    props.addText(noteInputTemp);
+    //clear data input temp
+    setNoteInputTemp({
+      title: "",
+      content: ""
+    });
+    //prevent form from refresh
+    event.preventDefault();
+  }
+
   return (
     <div>
-      <form
-        onSubmit={(event) => {
-          //call func add
-          props.addText(noteInputTemp);
-          //clear data input temp
-          setNoteInputTemp({
-            title: "",
-            content: ""
-          });
-          //prevent form from refresh
-          event.preventDefault();
-        }}
-      >
+      <form onSubmit={submit}>
         <input
           onChange={storeInputTemp}
           name="title"
